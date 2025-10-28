@@ -1,0 +1,31 @@
+/* Estiliza o jogo */
+#display {
+    height: 60%;
+
+    position: relative;
+
+    background: url(../assets/Filter1.png);
+    border: 3px solid rgba(255, 255, 255, 0.05);
+}
+
+#display #earth {
+    width: 20%;
+    height: fit-content;
+
+    position: absolute;
+    bottom: 0;
+
+    pointer-events: none;
+}
+
+#display #meteor {
+    width: 5%;
+    height: fit-content;
+
+    position: absolute;
+    top: 0;
+
+    display: none;
+
+    pointer-events: none;
+}

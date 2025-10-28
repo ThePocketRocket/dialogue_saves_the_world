@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha das Letras</title>
+    <link rel="stylesheet" href="css/css-reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <div id="records" class="box side-box-size">
+            <h2>Recordes</h2>
+            <h3></h3>
+        </div>
+
+        <div id="game">
+            <div id="player" class="box">
+                <h2>Jogador</h2>
+                <p>Daniel Ferreira</p>
+                <span>
+                    
+                </span>
+            </div>
+
+            <canvas id="display" class="box"></canvas>
+
+            <div id="word" class="box"></div>
+
+            <div id="letters" class="box"></div>
+        </div>
+
+        <div id="score" class="box side-box-size">
+            <h2>Pontuação</h2>
+            <h3 id="points"></h3>
+        </div>
+
+        <dialog id="startModal" class="modal">
+            <div>
+                <h1>Batalha das Letras</h1>
+                <input placeholder="Digite seu nome de usuário." type="text">
+                <button id="startButton">Iniciar</button>
+            </div>
+        </dialog>
+    </div>
+    <script src="script/main.js" type="module"></script>
+    <script src="script/game.js" type="module"></script>
+</body>
+</html>

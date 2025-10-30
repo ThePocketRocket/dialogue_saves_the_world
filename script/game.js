@@ -32,7 +32,10 @@ export function randomizesResponseLetters(word, secretWord) {
             randomizedLetters.push(word[i])
         }
         else {
-            const letter = alphabet[Math.floor(Math.random() * alphabet.length)];
+            let letter;
+            do {
+                letter = alphabet[Math.floor(Math.random() * alphabet.length)];
+            } while(randomizedLetters.includes(letter) && !word.includes(letter))
             randomizedLetters.push(letter);
         }
     }

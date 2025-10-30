@@ -1,6 +1,6 @@
 import { determinesLevel, randomizesSecretWord, randomizesResponseLetters, randomWord } from "./game.js";
 
-let gameScore = 200;
+let gameScore = 0;
 let gameLevel = 0;
 let playerHearts = 5
 let word = "";
@@ -9,22 +9,35 @@ const divLetters = document.querySelector("#letters");
 const h3Points = document.querySelector("#points")
 const divWord = document.querySelector("#word");
 const divRecords = document.querySelector("#records h3");
+const h3PlayerName = document.querySelector("#player h3");
+const startModal = document.querySelector("#startModal");
+const startButton = document.querySelector("#startButton");
 
 gameLevel = determinesLevel(gameScore);
 word = randomWord(gameLevel);
 secretWord = randomizesSecretWord(word);
 
-// Desenha recordes
-drawRecords();
+// Inicia o jogo e fecha o modal
+startButton.addEventListener("click", () => {
+    startGame();
 
-// Desenha pontuação
-drawScore();
+    // Desenha recordes
+    drawRecords();
 
-// Desenha a palavra com caracteres ocultos
-drawSecretWord(secretWord);
+    // Desenha nome
+    drawPlayerName();
+    
+    // Desenha pontuação
+    drawScore();
+    
+    // Desenha a palavra com caracteres ocultos
+    drawSecretWord(secretWord);
+    
+    // Desenha as possibilidades de letras
+    drawLetters();
+});
 
-// Desenha as possibilidades de letras
-drawLetters();
+
 
 
 
@@ -87,6 +100,11 @@ function drawRecords() {
     }
 }
 
+function drawPlayerName() {
+    const playerName = sessionStorage.getItem("playerName");
+    h3PlayerName.innerText = playerName;
+}
+
 function drawSecretWord() {
     const pWord = document.createElement("p");
     divWord.innerHTML = "";
@@ -125,6 +143,17 @@ function setRecord() {
         );
     }
 
+}
+
+function startGame() {
+    const inputUser = document.querySelector("#startModal input");
+    if (inputUser.value != "") {
+        sessionStorage.setItem("playerName", inputUser.value)
+        startModal.close(); // Não está funcionando
+        startModal.style.display = "none";
+    } else {
+        startGame();
+    }
 }
 
 function endGame() {

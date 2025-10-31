@@ -28,6 +28,8 @@
 
             <canvas id="display" class="box"></canvas>
 
+            <div id="hint"></div>
+
             <div id="word" class="box"></div>
 
             <div id="letters" class="box"></div>
@@ -41,10 +43,19 @@
     <dialog id="startModal" class="modal">
         <div>
             <h1>DIALOGUE SAVES THE WORLD!</h1>
-            <input placeholder="Digite seu nome de usuário." type="text">
+            <label for="user">Jogador:</label>
+            <input placeholder="Digite seu nome de usuário." type="text" name="user">
             <button id="startButton" >Iniciar</button>
         </div>
     </dialog>
+    
+    <dialog id="endModal" class="modal">
+        <div>
+            <h1>FIM DE JOGO!</h1>
+            <button id="endButton" >Jogar Novamente</button>
+        </div>
+    </dialog>
+    
     <script src="script/main.js" type="module"></script>
     <script src="script/game.js" type="module"></script>
 </body>

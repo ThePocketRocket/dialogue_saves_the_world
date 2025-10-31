@@ -1,6 +1,6 @@
 /* Organiza a tela */
 
-h1, h2, h3, p {
+h1, h2, h3, p, label {
     height: fit-content;
     
     margin: 0;
@@ -115,22 +115,27 @@ body {
     width: auto;
 }
 
+.modal::backdrop {
+    background: rgba(255, 255, 255, 0.862) url(../assets/Filter1.png)
+}
 
-#startModal {
+.modal {
     width: 100vw;
     height: 100vh;
     
+    align-self: center;
+    justify-self: center;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
     border: none;
-
-    background: rgba(255, 255, 255, 0.862) url(../assets/Filter1.png);
+    background: none;
 }
 
-#startModal div {
+.modal div {
     width: 30%;
     height: 30%;
 
@@ -143,8 +148,19 @@ body {
     background: black url(../assets/Filter1.png);
 }
 
-#startModal h1 {
+.modal h1 {
   font-size: 1.5rem;
+}
+
+.modal button {
+    color: white;
+    font-weight: bold;
+    
+    background-color: rgb(37, 127, 37);
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+    padding: .5rem 1rem;
 }
 
 #startModal input {
@@ -155,14 +171,6 @@ body {
     padding: 1rem;
     outline: none;
 }
-
-#startModal button {
-    color: white;
-    font-weight: bold;
-    
-    background-color: rgb(37, 127, 37);
-    border: none;
-    border-radius: .3rem;
-    cursor: pointer;
-    padding: .5rem 1rem;
+#startModal, #endModal {
+    display: none;
 }

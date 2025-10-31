@@ -1,10 +1,10 @@
 import { determinesLevel, randomizesSecretWord, randomizesResponseLetters, randomWord } from "./game.js";
 
-let gameScore = 0;
-let gameLevel = 0;
-let playerHearts = 5
-let word = "";
-let secretWord = "";
+let gameScore;
+let gameLevel;
+let playerHearts;
+let word;
+let secretWord;
 const divLetters = document.querySelector("#letters");
 const h3Points = document.querySelector("#points")
 const divWord = document.querySelector("#word");
@@ -12,43 +12,27 @@ const divRecords = document.querySelector("#records h3");
 const h3PlayerName = document.querySelector("#player h3");
 const startModal = document.querySelector("#startModal");
 const startButton = document.querySelector("#startButton");
+const endModal = document.querySelector("#endModal");
+const endButton = document.querySelector("#endButton");
+const spanHearts = document.querySelector("#player span");
 
-gameLevel = determinesLevel(gameScore);
-word = randomWord(gameLevel);
-secretWord = randomizesSecretWord(word);
+
+drawModal(startModal)
 
 // Inicia o jogo e fecha o modal
 startButton.addEventListener("click", () => {
-    startGame();
-
-    // Desenha recordes
-    drawRecords();
-
-    // Desenha nome
-    drawPlayerName();
-    
-    // Desenha pontuação
-    drawScore();
-    
-    // Desenha a palavra com caracteres ocultos
-    drawSecretWord(secretWord);
-    
-    // Desenha as possibilidades de letras
-    drawLetters();
+    // Inicia o jogo
+    const inputUser = document.querySelector("#startModal input");
+    if (inputUser.value != "") {
+        sessionStorage.setItem("playerName", inputUser.value)
+        closeModal(startModal);
+        resetGameStatus();
+        startGame();
+    }
 });
 
-
-
-
-
-// Desenha corações
-const spanHearts = document.querySelector("#player span");
-for (let i = 0; i < playerHearts; i++) {
-    const imgHeart = document.createElement("img");
-    imgHeart.src = "assets/heart.png"
-    imgHeart.classList.add("hearts")
-    spanHearts.appendChild(imgHeart);
-}
+// Pass the function reference so it's called only when the button is clicked
+endButton.addEventListener("click", restartGame);
 
 // Identifica click e acumula pontuação ou tira vida
 divLetters.addEventListener("click", (e) => {
@@ -124,13 +108,25 @@ function drawLetters() {
     }
 }
 
-function updateSecretWord(letter) {
-    for (let i = 0; i < secretWord.length; i++) {
-        if (secretWord[i] == "_" && word[i] == letter) {
-            secretWord[i] = letter;
-            break;
-        }
+function drawHearts() {
+    spanHearts.innerHTML = "";
+
+    for (let i = 0; i < playerHearts; i++) {
+        const imgHeart = document.createElement("img");
+        imgHeart.src = "assets/heart.png"
+        imgHeart.classList.add("hearts")
+        spanHearts.appendChild(imgHeart);
     }
+}
+
+function drawModal(modal) {
+    modal.showModal();
+    modal.style.display = "flex";
+}
+
+function closeModal(modal) {
+    modal.close();
+    modal.style.display = "none";
 }
 
 function setRecord() {
@@ -146,17 +142,52 @@ function setRecord() {
 }
 
 function startGame() {
-    const inputUser = document.querySelector("#startModal input");
-    if (inputUser.value != "") {
-        sessionStorage.setItem("playerName", inputUser.value)
-        startModal.close(); // Não está funcionando
-        startModal.style.display = "none";
-    } else {
-        startGame();
-    }
+    resetGameStatus();
+
+    // Desenha vidas
+    drawHearts();
+
+    // Desenha recordes
+    drawRecords();
+
+    // Desenha nome
+    drawPlayerName();
+    
+    // Desenha pontuação
+    drawScore();
+    
+    // Desenha a palavra com caracteres ocultos
+    drawSecretWord(secretWord);
+    
+    // Desenha as possibilidades de letras
+    drawLetters();
 }
 
 function endGame() {
     setRecord();
     drawRecords();
+    drawModal(endModal);
+}
+
+function restartGame() {
+    resetGameStatus();
+    closeModal(endModal);
+    startGame();
+}
+
+function resetGameStatus() {
+    gameScore = 0;
+    playerHearts = 3;
+    gameLevel = determinesLevel(gameScore);
+    word = randomWord(gameLevel);
+    secretWord = randomizesSecretWord(word);
+}
+
+function updateSecretWord(letter) {
+    for (let i = 0; i < secretWord.length; i++) {
+        if (secretWord[i] == "_" && word[i] == letter) {
+            secretWord[i] = letter;
+            break;
+        }
+    }
 }

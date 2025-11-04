@@ -1,6 +1,7 @@
 /* Estiliza o jogo */
 #hint {
-    margin-top: 20%;
+    margin: 20% auto 0 auto;
+    zoom: 3;
 }
 
 #word {

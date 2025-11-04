@@ -5,12 +5,14 @@ let gameScore;
 let gameLevel;
 let playerHearts;
 let word;
+let hint;
 let secretWord;
 const h3Points = document.querySelector("#points");
 const h3PlayerName = document.querySelector("#player h3");
 const divLetters = document.querySelector("#letters");
 const divWord = document.querySelector("#word");
 const divRecords = document.querySelector("#records h3");
+const divHint = document.querySelector("#hint")
 const spanHearts = document.querySelector("#player span");
 const startModal = document.querySelector("#startModal");
 const startButton = document.querySelector("#startButton");
@@ -65,10 +67,13 @@ divLetters.addEventListener("click", (e) => {
         
         setTimeout(() => {
             gameLevel = determinesLevel(gameScore);
-            word = randomWord(gameLevel);
+            let hintAndWord = randomWord(gameLevel);
+            hint = hintAndWord[0]
+            word = hintAndWord[1]
             secretWord = randomizesSecretWord(word);
             drawSecretWord();
             drawLetters();
+            drawHint();
         }, 1000);
     }
 })
@@ -122,6 +127,10 @@ function drawHearts() {
     }
 }
 
+function drawHint() {
+    divHint.innerHTML = hint
+}
+
 function drawModal(modal) {
     modal.showModal();
     modal.style.display = "flex";
@@ -168,6 +177,8 @@ function startGame() {
     
     // Desenha as possibilidades de letras
     drawLetters();
+
+    drawHint();
 }
 
 function endGame() {
@@ -186,7 +197,9 @@ function resetGameStatus() {
     gameScore = 0;
     playerHearts = 3;
     gameLevel = determinesLevel(gameScore);
-    word = randomWord(gameLevel);
+    let hintAndWord = randomWord(gameLevel);
+    hint = hintAndWord[0]
+    word = hintAndWord[1]
     secretWord = randomizesSecretWord(word);
 }
 

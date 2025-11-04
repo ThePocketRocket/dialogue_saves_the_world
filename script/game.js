@@ -1,8 +1,23 @@
 const words = {
-  1: ["CASA", "BOLA", "GATO", "PATO", "FOGO", "SOL", "FLOR", "MÃO", "PÉ", "NUVEM", "LUA", "RATO", "MESA", "LEÃO", "UVA", "VACA", "TREM"],
-  2: ["JANELA", "AMARELO", "CARROÇA", "CAMISETA", "GIRAFA", "ESCADA", "MACACO", "PINTURA", "ABELHA", "CACHORRO", "MORANGO", "CHAVEIRO", "CADERNO", "TIGRE", "GALINHA", "DOCEIRA", "FORMIGA", "BATATA", "SORVETE", "COZINHA"],
-  3: ["COMPUTADOR", "HELICÓPTERO", "BIBLIOTECA", "BRINCADEIRA", "FOTOGRAFIA", "AVENTURA", "DINOSSAURO", "MARAVILHOSO", "DESCOBERTA", "RESPONSÁVEL", "CROCODILO", "ALIMENTAÇÃO", "CONHECIMENTO", "FELICIDADE", "PARALELEPÍPEDO", "EXTRAORDINÁRIO", "NATUREZA", "COMUNICATIVO", "TRANSPORTE", "PLANETA"]
+  1: [
+    ["🏠", "CASA"],  ["⚽", "BOLA"],   ["🐱", "GATO"], ["🦆", "PATO"], ["🔥", "FOGO"],  ["🗝️", "CHAVE"],
+    ["🌞", "SOL"],   ["🌸", "FLOR"],   ["🤚", "MÃO"],  ["🦶", "PÉ"],   ["☁️", "NUVEM"], ["🍬", "DOCE"],
+    ["🌙", "LUA"],   ["🐭", "RATO"],   ["🦁", "LEÃO"], ["🍇", "UVA"],  ["🐮", "VACA"],  ["🚂", "TREM"],
+    ["⛵", "BARCO"], ["🥄", "COLHER"], ["🥝", "KIWI"], ["🍎", "MAÇÃ"], ["🥥", "COCO"]
+  ],
+  2: [
+    ["🪟", "JANELA"],   ["🟨", "AMARELO"],  ["🐎", "CAVALO"],   ["👕", "CAMISETA"], ["🦒", "GIRAFA"],
+    ["🪜", "ESCADA"],   ["🐒", "MACACO"],   ["🐝", "ABELHA"],   ["🐶", "CACHORRO"], ["🍓", "MORANGO"],
+    ["📒", "CADERNO"],  ["🐯", "TIGRE"],    ["🐔", "GALINHA"],  ["🐜", "FORMIGA"],  ["🥔", "BATATA"],
+    ["🍦", "SORVETE"],  ["💺", "ASSENTO",]  ["🍌", "BANANA"],   ["🍉", "MELANCIA"]
+  ],
+  3: [
+    ["💻", "COMPUTADOR"], ["🚁", "HELICÓPTERO"], ["🧭", "BÚSSOLA"],   ["🦖", "DINOSSAURO"], ["🍔", "HAMBÚRGER"],
+    ["✨", "ESTRELAS"],   ["🔬", "MICROSCÓPIO"], ["🐊", "CROCODILO"], ["🧠", "CÉREBRO"], ["🥞", "PANQUECA"],
+    ["😄", "FELICIDADE"], ["🧱", "TIJOLOS"],     ["⛰️", "NATUREZA"],  ["🌍", "PLANETA"], ["🍊", "LARANJA"]
+  ]
 };
+
 
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 

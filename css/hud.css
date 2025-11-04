@@ -1,6 +1,6 @@
 /* Organiza a tela */
 
-h1, h2, h3, p, label {
+h1, h2, h3, p, label, a {
     height: fit-content;
     
     margin: 0;
@@ -23,12 +23,12 @@ body {
     justify-content: center;
     align-items: center;
     
-    background: black url(../assets/Filter2.png);
+    background: rgb(30, 30, 30) url(../assets/Filter2.png);
 }
 
 #game-container {
-    width: 80%;
-    height: 80%;
+    width: 95%;
+    height: 90%;
 
     display: flex;
     justify-content: space-between;
@@ -41,11 +41,11 @@ body {
     justify-content: center;
 
     border-radius: .3rem;
-    background: rgb(39, 39, 39);
+    background: transparent;
 }
 
 .side-box-size {
-    width: 25%;
+    width: 10%;
     min-height: 100px;
     height: fit-content;
 }
@@ -71,43 +71,15 @@ body {
     gap: 5%;
 }
 
-#word {
-    display: none;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-}
-
-#letters {
-    height: 10%;
-    
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    gap: 1%;
-}
-
-.letter {
-    height: 100%;
-    min-width: 10%;
-
-    background: rgb(39, 39, 39);
-    color: white;
-    border-radius: .3rem;
-    transition-duration: 150ms;
-    
-    cursor: pointer;
-}
-
-.letter:hover {
-    background: rgb(30, 30, 30);
-    transform: translateY(-5px);
-}
-
 #score, #records{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#score h3, #records h3 {
+    margin-top: 1rem;
 }
 
 .hearts {
@@ -116,7 +88,7 @@ body {
 }
 
 .modal::backdrop {
-    background: rgba(255, 255, 255, 0.862) url(../assets/Filter1.png)
+    background: rgba(0, 0, 0, 0.65) url(../assets/Filter1.png)
 }
 
 .modal {
@@ -145,7 +117,7 @@ body {
     flex-direction: column;
     
     border-radius: .3rem;
-    background: black url(../assets/Filter1.png);
+    background: rgb(20, 20, 20) url(../assets/Filter1.png);
 }
 
 .modal h1 {
@@ -163,6 +135,10 @@ body {
     padding: .5rem 1rem;
 }
 
+.modal button:hover {
+    background-color: rgb(37, 104, 37);
+}
+
 #startModal input {
     text-align: center;
     font-weight: bold;
@@ -170,7 +146,30 @@ body {
     height: 5vh;
     padding: 1rem;
     outline: none;
+    border: none;
+    border-radius: .3rem;
 }
+
+#startModal input:focus {
+    box-shadow: 0px 3px rgb(90, 90, 90);
+}
+
 #startModal, #endModal {
     display: none;
+}
+
+#criador {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#criador a {
+    color: rgb(2, 111, 201);
+    font-weight: bold;
 }

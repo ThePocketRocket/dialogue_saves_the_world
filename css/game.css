@@ -1,31 +1,44 @@
 /* Estiliza o jogo */
-#display {
-    height: 60%;
-
-    position: relative;
-
-    background: url(../assets/Filter1.png);
-    border: 3px solid rgba(255, 255, 255, 0.05);
+#hint {
+    margin-top: 20%;
 }
 
-#display #earth {
-    width: 20%;
-    height: fit-content;
-
-    position: absolute;
-    bottom: 0;
-
-    pointer-events: none;
+#word {
+    display: flex;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
 }
 
-#display #meteor {
-    width: 5%;
-    height: fit-content;
+#word p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 
-    position: absolute;
-    top: 0;
+#letters {
+    height: 10%;
+    
+    display: flex;
+    align-items: center;
+    background: transparent;
+    gap: 1%;
+}
 
-    display: none;
+.letter {
+    height: 100%;
+    min-width: 10%;
 
-    pointer-events: none;
+    background: rgb(39, 39, 39) url("../assets/Filter1.png");
+    color: white;
+    border-radius: .3rem;
+    transition-duration: 150ms;
+    font-weight: bold;
+    
+    cursor: pointer;
+    
+}
+
+.letter:hover {
+    background: rgb(55, 55, 55);
+    transform: translateY(-5px);
 }

@@ -1,0 +1,17 @@
+#word .correctWord {
+    color: rgb(15, 212, 15);
+    animation: wave 1s ease-in-out;
+    animation-fill-mode: forwards; /* Mantém o estado final da animação */
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(100%);
+  }
+  50% {
+    transform: scale(120%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}

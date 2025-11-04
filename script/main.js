@@ -1,3 +1,4 @@
+import { correctWord } from "./animations.js";
 import { determinesLevel, randomizesSecretWord, randomizesResponseLetters, randomWord } from "./game.js";
 
 let gameScore;
@@ -5,17 +6,16 @@ let gameLevel;
 let playerHearts;
 let word;
 let secretWord;
+const h3Points = document.querySelector("#points");
+const h3PlayerName = document.querySelector("#player h3");
 const divLetters = document.querySelector("#letters");
-const h3Points = document.querySelector("#points")
 const divWord = document.querySelector("#word");
 const divRecords = document.querySelector("#records h3");
-const h3PlayerName = document.querySelector("#player h3");
+const spanHearts = document.querySelector("#player span");
 const startModal = document.querySelector("#startModal");
 const startButton = document.querySelector("#startButton");
 const endModal = document.querySelector("#endModal");
 const endButton = document.querySelector("#endButton");
-const spanHearts = document.querySelector("#player span");
-
 
 drawModal(startModal)
 
@@ -24,10 +24,11 @@ startButton.addEventListener("click", () => {
     // Inicia o jogo
     const inputUser = document.querySelector("#startModal input");
     if (inputUser.value != "") {
-        sessionStorage.setItem("playerName", inputUser.value)
+        sessionStorage.setItem("playerName", inputUser.value);
         closeModal(startModal);
         resetGameStatus();
         startGame();
+        
     }
 });
 
@@ -49,7 +50,7 @@ divLetters.addEventListener("click", (e) => {
             drawSecretWord(secretWord);
         } else {
             playerHearts--;
-            spanHearts.removeChild(spanHearts.lastChild);
+            drawHearts();
             if (playerHearts == 0) {
                 endGame();
             }
@@ -60,13 +61,15 @@ divLetters.addEventListener("click", (e) => {
     if (word == secretWord.join("")) {
         gameScore += 10;
         drawScore();
+        correctWord(divWord.firstChild);
+        
         setTimeout(() => {
             gameLevel = determinesLevel(gameScore);
             word = randomWord(gameLevel);
             secretWord = randomizesSecretWord(word);
             drawSecretWord();
-            drawLetters()
-        }, 1000)
+            drawLetters();
+        }, 1000);
     }
 })
 
@@ -102,7 +105,7 @@ function drawLetters() {
     divLetters.innerHTML = "";
     for (let letter of randomizedLetters) {
         const letterButton = document.createElement("button");
-        letterButton.classList.add("letter")
+        letterButton.classList.add("letter");
         letterButton.innerHTML = letter;
         divLetters.appendChild(letterButton);
     }
@@ -113,8 +116,8 @@ function drawHearts() {
 
     for (let i = 0; i < playerHearts; i++) {
         const imgHeart = document.createElement("img");
-        imgHeart.src = "assets/heart.png"
-        imgHeart.classList.add("hearts")
+        imgHeart.src = "assets/heart.png";
+        imgHeart.classList.add("hearts");
         spanHearts.appendChild(imgHeart);
     }
 }
@@ -131,11 +134,15 @@ function closeModal(modal) {
 
 function setRecord() {
     if (localStorage.getItem("gameRecord") == null) {
-        localStorage.setItem("gameRecord", gameScore);
-    } else {
         localStorage.setItem(
             "gameRecord", 
-            `${localStorage.getItem("gameRecord")}\n${gameScore}`
+            `${sessionStorage.getItem("playerName")}: ${gameScore}`
+        );
+    } else {
+        
+        localStorage.setItem(
+            "gameRecord", 
+            `${localStorage.getItem("gameRecord")}\n${sessionStorage.getItem("playerName")}: ${gameScore}`
         );
     }
 
